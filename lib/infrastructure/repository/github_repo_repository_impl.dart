@@ -1,6 +1,6 @@
 import '../../domain/entity/github_repo.dart';
 import '../../domain/factory/github_repo_factory.dart';
-import '../../domain/repository/githun_repo_repository.dart';
+import '../../domain/repository/github_repo_repository.dart';
 import '../datasource/github_generator_api.dart';
 
 class GitHubRepoRepositoryImpl implements GitHubRepoRepository {
