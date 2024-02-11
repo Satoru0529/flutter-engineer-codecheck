@@ -25,6 +25,8 @@ dependencies:
 
   http: 
 
+  device_preview:
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

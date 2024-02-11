@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "device_preview",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "--dart-define=devicePreview=${input:devicePreview}"
+            ],
+        },
+    ],
+    "inputs": [
+        {
+            "id": "devicePreview",
+            "type": "pickString",
+            "description": "Select the value for devicePreview",
+            "options": [
+                "on",
+                "off"
+            ],
+            "default": "off"
+        }
+    ]
+}
