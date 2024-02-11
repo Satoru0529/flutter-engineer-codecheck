@@ -10,19 +10,23 @@ class SearchTextField extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final notifier = ref.watch(gitHubRepoListNotifierProvider.notifier);
 
-    return TextField(
-      controller: notifier.searchController,
-      decoration: InputDecoration(
-        hintText: 'Search',
-        fillColor: Theme.of(context).colorScheme.onSurface.withOpacity(0.12),
-        filled: true,
-        border: InputBorder.none,
-        prefixIcon: const Icon(Icons.search),
-        suffixIcon: IconButton(
-            icon: const Icon(Icons.close),
-            onPressed: () => notifier.searchController.clear()),
+    return Container(
+      width: 340,
+      margin: const EdgeInsets.symmetric(vertical: 10.0),
+      child: TextField(
+        controller: notifier.searchController,
+        decoration: InputDecoration(
+          hintText: 'Search',
+          fillColor: Theme.of(context).colorScheme.onSurface.withOpacity(0.12),
+          filled: true,
+          border: InputBorder.none,
+          prefixIcon: const Icon(Icons.search),
+          suffixIcon: IconButton(
+              icon: const Icon(Icons.close),
+              onPressed: () => notifier.searchController.clear()),
+        ),
+        onSubmitted: (_) => notifier.searchRepos(),
       ),
-      onSubmitted: (_) => notifier.searchRepos(),
     );
   }
 }
