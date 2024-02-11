@@ -29,14 +29,16 @@ class DetailPage extends StatelessWidget {
               Row(
                 children: [
                   infoCard('Language', gitHubRepoState.language, Icons.code),
-                  infoCard('Forks', gitHubRepoState.forksCount.toString(),
-                      Icons.fork_right),
+                  infoCard(
+                      'Stargazers',
+                      gitHubRepoState.stargazersCount.toString(),
+                      Icons.star_border),
                 ],
               ),
               Row(
                 children: [
                   infoCard('Watchers', gitHubRepoState.watchersCount.toString(),
-                      Icons.visibility),
+                      Icons.visibility_outlined),
                   infoCard('Forks', gitHubRepoState.forksCount.toString(),
                       Icons.fork_right),
                 ],
