@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/l10n/l10n.dart';
 import '../notifier/github_repo_list_notifier.dart';
 import '../state/github_repo_state.dart';
 import '../page/detail_page.dart';
@@ -13,9 +14,33 @@ class GitHubRepoList extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final asyncState = ref.watch(gitHubRepoListNotifierProvider);
+    final notifier = ref.watch(gitHubRepoListNotifierProvider.notifier);
 
     return asyncState.when(
       data: (repoList) {
+        if (repoList.isEmpty) {
+          // 検索結果が0件の場合
+          if (notifier.isSearch) {
+            return SliverFillRemaining(
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(36.0),
+                  child: Text(L10n.of(context).notFound),
+                ),
+              ),
+            );
+          } else {
+            return SliverFillRemaining(
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(36.0),
+                  child: Text(L10n.of(context).pleaseEnter),
+                ),
+              ),
+            );
+          }
+        }
+
         return SliverList(
           delegate: SliverChildBuilderDelegate(
             (BuildContext context, int index) {
@@ -33,8 +58,8 @@ class GitHubRepoList extends ConsumerWidget {
           ),
         );
       },
-      error: (error, stack) => const SliverFillRemaining(
-        child: Center(child: Text('エラーが発生しました')),
+      error: (error, stack) => SliverFillRemaining(
+        child: Center(child: Text(L10n.of(context).error)),
       ),
       loading: () => const SliverFillRemaining(
         child: Center(child: CircularProgressIndicator()),

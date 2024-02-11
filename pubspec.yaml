@@ -12,6 +12,10 @@ dependencies:
   flutter:
     sdk: flutter
 
+  flutter_localizations:
+    sdk: flutter  
+  intl:
+
   cupertino_icons:
 
   flutter_riverpod:
@@ -20,6 +24,8 @@ dependencies:
   freezed: 
 
   http: 
+
+  device_preview:
 
 dev_dependencies:
   flutter_test:
@@ -35,3 +41,4 @@ dev_dependencies:
 flutter:
 
   uses-material-design: true
+  generate: true
