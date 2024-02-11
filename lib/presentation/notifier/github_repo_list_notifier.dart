@@ -19,14 +19,21 @@ class GitHubRepoListNotifier
 
   final GetGitHubReposUsecase _getGitHubReposUsecase;
   final searchController = TextEditingController();
+  late bool isSearch = false;
 
   // レポジトリ検索
   Future<void> searchRepos() async {
+    if (searchController.text.isEmpty) {
+      return;
+    }
+
     state = const AsyncValue.loading();
 
     state = await AsyncValue.guard(() async {
       final res = await _getGitHubReposUsecase.execute(searchController.text);
       return res.map((e) => GitHubRepoState.fromEntity(e)).toList();
     });
+
+    isSearch = true;
   }
 }

@@ -14,14 +14,31 @@ class GitHubRepoList extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final asyncState = ref.watch(gitHubRepoListNotifierProvider);
+    final notifier = ref.watch(gitHubRepoListNotifierProvider.notifier);
 
     return asyncState.when(
       data: (repoList) {
-        // リポジトリリストが空の場合は、テキストを表示
         if (repoList.isEmpty) {
-          return SliverFillRemaining(
-            child: Center(child: Text(L10n.of(context).pleaseEnter)),
-          );
+          // 検索結果が0件の場合
+          if (notifier.isSearch) {
+            return SliverFillRemaining(
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(36.0),
+                  child: Text(L10n.of(context).notFound),
+                ),
+              ),
+            );
+          } else {
+            return SliverFillRemaining(
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(36.0),
+                  child: Text(L10n.of(context).pleaseEnter),
+                ),
+              ),
+            );
+          }
         }
 
         return SliverList(
