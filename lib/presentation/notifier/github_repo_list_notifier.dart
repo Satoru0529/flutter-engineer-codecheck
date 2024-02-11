@@ -7,7 +7,7 @@ import '../state/github_repo_state.dart';
 final gitHubRepoListNotifierProvider = StateNotifierProvider<
     GitHubRepoListNotifier, AsyncValue<List<GitHubRepoState>>>(
   (ref) => GitHubRepoListNotifier(
-    getGitHubReposUsecase: ref.read(getUsersUsecaseProvider),
+    getGitHubReposUsecase: ref.read(getGithubReposUsecaseProvider),
   ),
 );
 

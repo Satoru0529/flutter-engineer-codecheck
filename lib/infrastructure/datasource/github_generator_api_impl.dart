@@ -24,7 +24,7 @@ class GitHubRepoGeneratorApiDatasourceImpl
           .toList();
       return data;
     } else {
-      throw NetworkException('RandomUserGeneratorApiImpl getUsers() "/"');
+      throw NetworkException('Github API error: ${response.statusCode}');
     }
   }
 }
