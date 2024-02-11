@@ -1,0 +1,7 @@
+{
+  "@@locale": "en",
+  "search": "Search",
+  "pleaseEnter": "Please enter a search keyword",
+  "notFound": "No repositories were found that contain the entered search keyword.",
+  "error": "An error has occurred"
+}

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/l10n/l10n.dart';
 import '../notifier/github_repo_list_notifier.dart';
 
 class SearchTextField extends ConsumerWidget {
@@ -16,7 +17,7 @@ class SearchTextField extends ConsumerWidget {
       child: TextField(
         controller: notifier.searchController,
         decoration: InputDecoration(
-          hintText: 'Search',
+          hintText: L10n.of(context).search,
           fillColor: Theme.of(context).colorScheme.onSurface.withOpacity(0.12),
           filled: true,
           border: InputBorder.none,
