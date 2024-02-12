@@ -13,7 +13,7 @@ class SearchTextField extends ConsumerWidget {
 
     return Container(
       width: 340,
-      margin: const EdgeInsets.symmetric(vertical: 10.0),
+      margin: const EdgeInsets.symmetric(vertical: 10),
       child: TextField(
         controller: notifier.searchController,
         decoration: InputDecoration(
@@ -23,8 +23,9 @@ class SearchTextField extends ConsumerWidget {
           border: InputBorder.none,
           prefixIcon: const Icon(Icons.search),
           suffixIcon: IconButton(
-              icon: const Icon(Icons.close),
-              onPressed: () => notifier.searchController.clear()),
+            icon: const Icon(Icons.close),
+            onPressed: notifier.searchController.clear,
+          ),
         ),
         onSubmitted: (_) => notifier.searchRepos(),
       ),

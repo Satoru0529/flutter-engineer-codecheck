@@ -1,8 +1,8 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'presentation/page/search_page.dart';
@@ -16,10 +16,12 @@ void main() {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]).then((_) {
-    runApp(DevicePreview(
-      enabled: _devicePreviewIfNeeded,
-      builder: (context) => const ProviderScope(child: MyApp()),
-    ));
+    runApp(
+      DevicePreview(
+        enabled: _devicePreviewIfNeeded,
+        builder: (context) => const ProviderScope(child: MyApp()),
+      ),
+    );
   });
 }
 

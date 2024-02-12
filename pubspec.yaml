@@ -31,12 +31,12 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints:
-
   build_runner:
   json_serializable:
 
   mockito:
+
+  pedantic_mono: any
 
 flutter:
 

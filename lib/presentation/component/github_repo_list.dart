@@ -5,8 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/l10n/l10n.dart';
 import '../notifier/github_repo_list_notifier.dart';
-import '../state/github_repo_state.dart';
 import '../page/detail_page.dart';
+import '../state/github_repo_state.dart';
 
 class GitHubRepoList extends ConsumerWidget {
   const GitHubRepoList({super.key});
@@ -24,7 +24,7 @@ class GitHubRepoList extends ConsumerWidget {
             return SliverFillRemaining(
               child: Center(
                 child: Padding(
-                  padding: const EdgeInsets.all(36.0),
+                  padding: const EdgeInsets.all(36),
                   child: Text(L10n.of(context).notFound),
                 ),
               ),
@@ -33,7 +33,7 @@ class GitHubRepoList extends ConsumerWidget {
             return SliverFillRemaining(
               child: Center(
                 child: Padding(
-                  padding: const EdgeInsets.all(36.0),
+                  padding: const EdgeInsets.all(36),
                   child: Text(L10n.of(context).pleaseEnter),
                 ),
               ),
@@ -83,9 +83,11 @@ class GitHubRepoListTile extends StatelessWidget {
       subtitle: Text(item.language),
       onTap: () {
         Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => DetailPage(gitHubRepoState: item)));
+          context,
+          MaterialPageRoute<void>(
+            builder: (context) => DetailPage(gitHubRepoState: item),
+          ),
+        );
       },
       contentPadding: const EdgeInsets.all(16),
     );

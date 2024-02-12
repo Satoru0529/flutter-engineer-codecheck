@@ -12,41 +12,53 @@ class DetailPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CircleAvatar(
                 backgroundImage: NetworkImage(gitHubRepoState.avatarUrl),
-                radius: 100.0,
+                radius: 100,
               ),
-              const SizedBox(height: 16.0),
-              Text(gitHubRepoState.fullName,
-                  style: const TextStyle(
-                      fontSize: 20.0, fontWeight: FontWeight.bold)),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 16),
+              Text(
+                gitHubRepoState.fullName,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 16),
               Row(
                 children: [
                   infoCard('Language', gitHubRepoState.language, Icons.code),
                   infoCard(
-                      'Stargazers',
-                      gitHubRepoState.stargazersCount.toString(),
-                      Icons.star_border),
+                    'Stargazers',
+                    gitHubRepoState.stargazersCount.toString(),
+                    Icons.star_border,
+                  ),
                 ],
               ),
               Row(
                 children: [
-                  infoCard('Watchers', gitHubRepoState.watchersCount.toString(),
-                      Icons.visibility_outlined),
-                  infoCard('Forks', gitHubRepoState.forksCount.toString(),
-                      Icons.fork_right),
+                  infoCard(
+                    'Watchers',
+                    gitHubRepoState.watchersCount.toString(),
+                    Icons.visibility_outlined,
+                  ),
+                  infoCard(
+                    'Forks',
+                    gitHubRepoState.forksCount.toString(),
+                    Icons.fork_right,
+                  ),
                 ],
               ),
               infoCard(
-                  'Open Issues',
-                  gitHubRepoState.openIssuesCount.toString(),
-                  Icons.error_outline),
+                'Open Issues',
+                gitHubRepoState.openIssuesCount.toString(),
+                Icons.error_outline,
+              ),
             ],
           ),
         ),
