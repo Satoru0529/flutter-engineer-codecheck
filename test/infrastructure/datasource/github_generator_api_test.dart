@@ -9,7 +9,8 @@ import 'package:mockito/mockito.dart';
 import 'github_generator_api_test.mocks.dart';
 
 @GenerateNiceMocks(
-    [MockSpec<http.Client>(), MockSpec<GitHubRepoGeneratorApiDatasource>()])
+  [MockSpec<http.Client>(), MockSpec<GitHubRepoGeneratorApiDatasource>()],
+)
 main() {
   late GitHubRepoGeneratorApiDatasource datasource;
   setUp(() async {
@@ -41,8 +42,11 @@ main() {
             .thenAnswer((_) async => http.Response('{"items": [30]}', 200));
 
         expect(
-          (await client.get(Uri.parse(
-                  'https://api.github.com/search/repositories?q=flutter&sort=stars&order=desc')))
+          (await client.get(
+            Uri.parse(
+              'https://api.github.com/search/repositories?q=flutter&sort=stars&order=desc',
+            ),
+          ))
               .body,
           '{"items": [30]}',
         );

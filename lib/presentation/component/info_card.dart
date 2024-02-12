@@ -8,7 +8,7 @@ Widget infoCard(String title, String value, IconData icon) {
       subtitle: Text(
         value,
         style: const TextStyle(
-          fontSize: 18.0,
+          fontSize: 18,
           fontWeight: FontWeight.bold,
         ),
       ),

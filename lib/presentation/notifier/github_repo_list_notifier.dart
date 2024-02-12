@@ -31,7 +31,7 @@ class GitHubRepoListNotifier
 
     state = await AsyncValue.guard(() async {
       final res = await _getGitHubReposUsecase.execute(searchController.text);
-      return res.map((e) => GitHubRepoState.fromEntity(e)).toList();
+      return res.map(GitHubRepoState.fromEntity).toList();
     });
 
     isSearch = true;

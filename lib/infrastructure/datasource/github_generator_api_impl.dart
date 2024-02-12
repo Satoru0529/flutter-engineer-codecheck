@@ -7,10 +7,9 @@ import 'github_generator_api.dart';
 
 class GitHubRepoGeneratorApiDatasourceImpl
     implements GitHubRepoGeneratorApiDatasource {
-  final String _baseUrl;
-
   GitHubRepoGeneratorApiDatasourceImpl({required String baseUrl})
       : _baseUrl = baseUrl;
+  final String _baseUrl;
 
   @override
   Future<List<GitHubRepoApi>> getRepos(String searchWord) async {
@@ -18,9 +17,9 @@ class GitHubRepoGeneratorApiDatasourceImpl
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
-      final responseBody = json.decode(response.body);
+      final responseBody = json.decode(response.body) as Map<String, dynamic>;
       final data = (responseBody['items'] as List)
-          .map((e) => GitHubRepoApi.fromJson(e))
+          .map((e) => GitHubRepoApi.fromJson(e as Map<String, dynamic>))
           .toList();
       return data;
     } else {

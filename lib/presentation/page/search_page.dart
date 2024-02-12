@@ -10,15 +10,16 @@ class SearchPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-          child: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            title: SearchTextField(),
-            pinned: true,
-          ),
-          GitHubRepoList(),
-        ],
-      )),
+        child: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              title: SearchTextField(),
+              pinned: true,
+            ),
+            GitHubRepoList(),
+          ],
+        ),
+      ),
     );
   }
 }
